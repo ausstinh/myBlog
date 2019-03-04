@@ -1,0 +1,32 @@
+runtime: php55
+api_version: 1
+
+handlers:
+- url: /
+  script: index.php
+
+- url: /index\.html
+  script: index.php
+
+- url: /stylesheets
+  static_dir: stylesheets
+
+- url: /(.*\.(gif|png|jpg))$
+  static_files: static/\1
+  upload: static/.*\.(gif|png|jpg)$
+
+- url: /login/.*
+  script: login.php
+  login: admin
+
+- url: /.*
+  script: not_found.php
+
+- url: /logout/.*
+  script: logout.php
+
+- url: /register/.*
+  script: register.php
+
+- url: /showMainWelcome/.*
+  script: showMainWelcome.php
